@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
+    return view('hello');
+});
+
+Route::get('/profile', function () {
     return view('profile', [
         'photo'         => asset('images/foto.jpg'),
         'initials'      => 'FM',
@@ -20,4 +24,4 @@ Route::get('/', function () {
         'linkedin'      => '#',
         'location'      => 'Surabaya, Indonesia',
     ]);
-});
+})->name('profile');
