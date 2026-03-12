@@ -41,32 +41,63 @@
             opacity: 0.4;
         }
 
-        /* Decorative horizontal lines */
-        body::after {
-            content: '';
+        /* ── Navigation ── */
+        nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 6px;
-            background: var(--rust);
+            top: 28px;
+            left: 36px;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            z-index: 20;
+            animation: fadeDown 0.9s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
 
+        nav a {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 300;
+            font-size: 0.72rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--ink);
+            position: relative;
+            padding-bottom: 3px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--rust);
+            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--rust);
+            transition: color 0.3s ease;
+        }
+
+        nav .nav-dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--ink);
+            opacity: 0.3;
+        }
+
+        /* ── Main content ── */
         .container {
             text-align: center;
             padding: 3rem;
             animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-        }
-
-        .label {
-            font-family: 'DM Sans', sans-serif;
-            font-weight: 300;
-            font-size: 0.75rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--rust);
-            margin-bottom: 1.2rem;
-            animation: fadeUp 0.9s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
 
         h1 {
@@ -134,16 +165,6 @@
             z-index: 1;
         }
 
-        /* Corner decorations */
-        .corner {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            border-color: var(--ink);
-            border-style: solid;
-            opacity: 0.15;
-        }
-
         .corner--tl { top: 24px; left: 24px; border-width: 2px 0 0 2px; }
         .corner--tr { top: 24px; right: 24px; border-width: 2px 2px 0 0; }
         .corner--bl { bottom: 24px; left: 24px; border-width: 0 0 2px 2px; }
@@ -151,6 +172,11 @@
 
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-16px); }
             to   { opacity: 1; transform: translateY(0); }
         }
 
@@ -162,14 +188,17 @@
 </head>
 <body>
 
-    <div class="corner corner--tl"></div>
-    <div class="corner corner--tr"></div>
-    <div class="corner corner--bl"></div>
-    <div class="corner corner--br"></div>
+    <!-- Navigation -->
+    <nav>
+        <a href="{{ route('hello') }}">Home</a>
+        <span class="nav-dot"></span>
+        <a href="#about">About Me</a>
+        <span class="nav-dot"></span>
+        <a href="#">Contact</a>
+    </nav>
 
     <div class="container">
-        <p class="label">Selamat Datang</p>
-        <h1>Hello<span>World.</span></h1>
+        <h1>Hello<span>World</span></h1>
         <div class="divider"></div>
         <a href="{{ route('profile') }}" class="btn">
             <span>Lihat Saya</span>

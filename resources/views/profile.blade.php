@@ -36,7 +36,8 @@
             font-family: var(--font-sans);
             font-weight: 300;
             line-height: 1.7;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         /* Ambient glow top-right */
@@ -355,7 +356,7 @@
         .bottom-bar {
             flex-shrink: 0;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
             padding: 0.9rem 3.5rem;
             border-top: 1px solid var(--border);
@@ -433,7 +434,7 @@
 
             <div class="actions">
                 <a href="{{ $portfolio_url ?? '#' }}" class="btn-primary">Lihat Portofolio</a>
-                <a href="mailto:{{ $email ?? '#' }}"  class="btn-ghost">Hubungi Saya</a>
+                <a href="{{ route('hello') }}"  class="btn-ghost">Kembali</a>
             </div>
         </div>
 
@@ -461,11 +462,6 @@
 
     <!-- Bottom bar -->
     <div class="bottom-bar">
-        <div class="social-links">
-            <a href="{{ $github   ?? '#' }}" class="social-link">GitHub</a>
-            <a href="{{ $linkedin ?? '#' }}" class="social-link">LinkedIn</a>
-            <a href="mailto:{{ $email ?? '#' }}" class="social-link">Email</a>
-        </div>
         <span class="bottom-loc">{{ $location ?? 'Surabaya, Indonesia' }}</span>
     </div>
 

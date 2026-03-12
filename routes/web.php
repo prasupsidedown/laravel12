@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('hello');
-});
+})-> name('hello');
 
 Route::get('/profile', function () {
     return view('profile', [
@@ -15,7 +15,7 @@ Route::get('/profile', function () {
         'status'        => 'Mahasiswa Aktif PENS',
         'role_short'    => 'Ahli makan dan tidur.',
         'tagline'       => 'Crafting digital experiences with purpose',
-        'bio'           => 'Mahasiswa yang memiliki ketertarikan pada pengembangan aplikasi...',
+        'bio'           => 'Mahasiswa yang memiliki ketertarikan pada pengembangan aplikasi dan desain antarmuka digital. Saya senang mengeksplorasi teknologi baru serta membangun proyek yang menggabungkan fungsi dan estetika.',
         'tags'          => ['Laravel', 'Flutter', 'UI/UX', 'Figma', 'Valorant', 'Palia'],
         'availability'  => 'Dijual',
         'portfolio_url' => '#',
